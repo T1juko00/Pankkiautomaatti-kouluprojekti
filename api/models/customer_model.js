@@ -9,8 +9,8 @@ const customer = {
   },
   add: function(customer, callback) {
     return db.query(
-      'insert into customer (id_customer,fname,lname,password,username,Account_id_number) values(?,?,?,?,?,?)',
-      [customer.id_customer, customer.fname, customer.lname,customer.password,customer.username,customer.Account_id_number],
+      'insert into customer (fname,lname,password,username,Account_id_number) values(?,?,?,?,?)',
+      [customer.fname, customer.lname,customer.password,customer.username,customer.Account_id_number],
       callback
     );
   },
@@ -19,8 +19,8 @@ const customer = {
   },
   update: function(id, customer, callback) {
     return db.query(
-      'update customer set id_customer=?,fname=?, lname=?,password=?,username=?,Account_id_number=? where id_customer=?',
-      [customer.id_customer, customer.fname, customer.lname,customer.password,customer.username,customer.Account_id_number, id],
+      'update customer set fname=?, lname=?,password=?,username=?,Account_id_number=? where id_customer=?',
+      [customer.fname, customer.lname,customer.password,customer.username,customer.Account_id_number, id],
       callback
     );
   }

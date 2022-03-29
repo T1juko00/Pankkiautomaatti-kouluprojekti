@@ -9,8 +9,8 @@ const card = {
   },
   add: function(card, callback) {
     return db.query(
-      'insert into card (id_card,cardnumber,pincode,Account_id_number,customer_id_customer,customer_Account_id_number) values(?,?,?,?,?,?)',
-      [card.id_card, card.cardnumber, card.pincode,card.Account_id_number,card.customer_id_customer,card.customer_Account_id_number],
+      'insert into card (cardnumber,pincode,Account_id_number,customer_id_customer,customer_Account_id_number) values(?,?,?,?,?)',
+      [card.cardnumber, card.pincode,card.Account_id_number,card.customer_id_customer,card.customer_Account_id_number],
       callback
     );
   },
@@ -19,8 +19,8 @@ const card = {
   },
   update: function(id, card, callback) {
     return db.query(
-      'update card set id_card=?,cardnumber=?, pincode=?,Account_id_number=?,customer_id_customer=?,customer_Account_id_number=? where id_card=?',
-      [card.id_card, card.cardnumber, card.pincode,card.Account_id_number,card.customer_id_customer,card.customer_Account_id_number, id],
+      'update card set cardnumber=?, pincode=?,Account_id_number=?,customer_id_customer=?,customer_Account_id_number=? where id_card=?',
+      [card.cardnumber, card.pincode,card.Account_id_number,card.customer_id_customer,card.customer_Account_id_number, id],
       callback
     );
   }
