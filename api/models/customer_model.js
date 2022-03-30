@@ -1,4 +1,6 @@
 const db = require('../database');
+const bcrypt = require('bcryptjs');
+const saltRounds=10;
 
 const customer = {
   getById: function(id, callback) {
@@ -8,21 +10,23 @@ const customer = {
     return db.query('select * from customer', callback);
   },
   add: function(customer, callback) {
+    bcrypt.hash(customer.password, saltRounds, function(err,hash) {
     return db.query(
       'insert into customer (fname,lname,password,username) values(?,?,?,?)',
-      [customer.fname, customer.lname,customer.password,customer.username,customer.Account_id_number],
-      callback
-    );
+      [customer.fname, customer.lname, hash , customer.username,],
+      callback)
+    });
   },
   delete: function(id, callback) {
     return db.query('delete from customer where id_customer=?', [id], callback);
   },
   update: function(id, customer, callback) {
+    bcrypt.hash(customer.password, saltRounds, function(err, hash) {
     return db.query(
       'update customer set fname=?, lname=?,password=?,username=? where id_customer=?',
-      [customer.fname, customer.lname,customer.password,customer.username, id],
-      callback
-    );
+      [customer.fname, customer.lname, hash,customer.username, id],
+      callback)
+    });
   }
 };
 module.exports = customer;
