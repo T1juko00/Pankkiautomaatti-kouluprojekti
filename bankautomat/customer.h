@@ -1,6 +1,10 @@
 #ifndef CUSTOMER_H
 #define CUSTOMER_H
 
+#include "myurl.h"
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 #include <QDialog>
 
 namespace Ui {
@@ -17,9 +21,17 @@ public:
 
 private slots:
     void on_btnShowtransactions_clicked();
+    void balanceSlot(QNetworkReply *reply);
 
 private:
     Ui::Customer *ui;
+    MyURL *objectMyURL;
+
+    QNetworkAccessManager *balanceManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+    QString username;
+    QByteArray webtoken;
 };
 
 #endif // CUSTOMER_H
