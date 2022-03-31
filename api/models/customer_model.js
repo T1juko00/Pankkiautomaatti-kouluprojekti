@@ -27,6 +27,12 @@ const customer = {
       [customer.fname, customer.lname, hash,customer.username, id],
       callback)
     });
+  },
+  getBalance:function(username,callback){
+    return db.query(
+      'SELECT fname, lname, cardnumber, balance FROM card inner join customer on card.customer_id_customer = customer.id_customer inner join account  on account.id_account = card.account_id_account where username =?', [username],callback);
   }
+
+
 };
 module.exports = customer;
