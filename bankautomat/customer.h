@@ -12,7 +12,7 @@ class Customer : public QDialog
     Q_OBJECT
 
 public:
-    explicit Customer(QString CustUsername,QString Customerid,QWidget *parent = nullptr);
+    explicit Customer(QString CustUsername,QString Customerid,QByteArray token, QWidget *parent = nullptr);
     ~Customer();
 
 private slots:
