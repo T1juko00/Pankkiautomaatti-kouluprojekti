@@ -59,4 +59,15 @@ function(request, response) {
   });
 });
 
+router.get('/transactions/:cardnumber', function(request,response) {
+  transactions.getTransactions(request.params.cardnumber, function(err,dbResult){
+    if(err){
+      response.json(err);
+    }
+    else{
+      response.json(dbResult);
+    }
+  });
+});
+
 module.exports = router;

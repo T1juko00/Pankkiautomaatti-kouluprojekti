@@ -23,6 +23,10 @@ const transactions = {
       [transactions.DATE_CLOCK, transactions.events,transactions.amount,transactions.account_id_account, id],
       callback
     );
+  },
+  getTransactions:function(cardnumber,callback){
+    return db.query(
+      'SELECT id_transactions, DATE, events, amount, accountnumber, cardnumber FROM transactions INNER JOIN account on transactions.account_id_account = account.id_account INNER JOIN card ON account.id_account = card.account_id_account WHERE cardnumber = ?;', [cardnumber],callback);
   }
 };
 module.exports = transactions;
