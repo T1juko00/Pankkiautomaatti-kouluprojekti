@@ -33,6 +33,7 @@ void Login::on_btnLogin_clicked()
     jsonObj.insert("password",password);
 
     QNetworkRequest request((base_url+"/login"));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
     loginManager = new QNetworkAccessManager(this);
     connect(loginManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
