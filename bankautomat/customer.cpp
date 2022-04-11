@@ -7,12 +7,12 @@ QDialog(parent),
 ui(new Ui::Customer)
 {
     ui->setupUi(this);
-    ui->labelUsername->setText(CustUsername);
+    //ui->labelUsername->setText(CustUsername);
     username = CustUsername;
     webtoken = token;
     ui->labelCustomerid->setText(Customerid);
     ui->labelCustomerid->setText(token);
-    objectMyURL = new MyURL;
+    objectMyUrl = new MyUrl;
 }
 
 Customer::~Customer()
@@ -22,9 +22,10 @@ Customer::~Customer()
 
 void Customer::on_btnShowtransactions_clicked()
 {
-    QString site_url=objectMyURL->getBase_url()+"/customer/balance/"+username;
+    QString site_url=objectMyUrl->getBase_url()+"/customer/balance/"+username;
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
 
     //WEBTOKEN ALKU
 
@@ -32,8 +33,9 @@ void Customer::on_btnShowtransactions_clicked()
     //WEBTOKEN LOPPU
 
     balanceManager = new QNetworkAccessManager(this);
-    connect(balanceManager, SIGNAL(finished (QNetworkReply*)),this, SLOT(balanceSlot(QNetworkReply*)));
+    connect(balanceManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(balanceSlot(QNetworkReply*)));
     reply = balanceManager->get(request);
+
 }
 
 void Customer::balanceSlot(QNetworkReply *reply)
@@ -45,7 +47,7 @@ void Customer::balanceSlot(QNetworkReply *reply)
         QString balance;
         foreach (const QJsonValue &value, json_array) {
             QJsonObject json_obj = value.toObject();
-            balance+=json_obj["fname"].toString()+"|"+json_obj["lname"].toString()+"|"+json_obj["cardnumber"].toString()+"|"+QString::number(json_obj["balance"].toInt())+"\r";
+            balance+=json_obj["fname"].toString()+"|"+json_obj["lname"].toString()+"|"+QString::number(json_obj["cardnumber"].toInt())+"|"+QString::number(json_obj["balance"].toInt())+"\r";
         }
 
         qDebug()<<balance;

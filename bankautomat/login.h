@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <myurl.h>
 #include <QtNetwork>
+#include <QNetworkReply>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 
@@ -30,7 +31,7 @@ private:
     QString password;
     QString id;
     Customer *objCustomerMain;
-    MyURL *objectMyURL;
+    MyUrl *objectMyUrl;
     QString base_url;
 
     QNetworkAccessManager *loginManager;

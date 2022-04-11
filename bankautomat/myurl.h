@@ -4,11 +4,11 @@
 
 
 
-class MyURL
+class MyUrl
 {
 public:
-    MyURL();
-    const QString &getBase_url() const;
+    MyUrl();
+    QString getBase_url() const;
 
 private:
     QString base_url;
