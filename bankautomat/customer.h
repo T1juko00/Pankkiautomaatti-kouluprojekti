@@ -3,6 +3,7 @@
 
 #include "myurl.h"
 #include <QtNetwork>
+#include <QNetworkReply>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <QDialog>
@@ -25,7 +26,7 @@ private slots:
 
 private:
     Ui::Customer *ui;
-    MyURL *objectMyURL;
+    MyUrl *objectMyUrl;
 
     QNetworkAccessManager *balanceManager;
     QNetworkReply *reply;

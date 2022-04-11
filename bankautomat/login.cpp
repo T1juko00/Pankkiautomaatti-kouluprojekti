@@ -8,8 +8,8 @@ Login::Login(QWidget *parent) :
     ui(new Ui::Login)
 {
     ui->setupUi(this);
-    objectMyURL = new MyURL;
-    base_url=objectMyURL->getBase_url();
+    objectMyUrl = new MyUrl;
+    base_url=objectMyUrl->getBase_url();
 
 }
 
@@ -47,7 +47,7 @@ void Login::loginSlot(QNetworkReply *reply)
     qDebug()<<response_data;
     if(response_data!="false") {
     token ="Bearer "+response_data;
-    //id="7";
+    id="2";
     objCustomerMain=new Customer(username,id,token);
     objCustomerMain->show();
     }
