@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "login.h"
+#include "dll_rfid.h"
 
 #include <QMainWindow>
 
@@ -17,11 +18,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+
 private slots:
     void on_btnLogin_clicked();
 
 private:
     Ui::MainWindow *ui;
     Login *objLogin;
+
+
 };
 #endif // MAINWINDOW_H

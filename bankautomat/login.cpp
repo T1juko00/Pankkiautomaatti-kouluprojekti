@@ -10,22 +10,35 @@ Login::Login(QWidget *parent) :
     ui->setupUi(this);
     objectMyUrl = new MyUrl;
     base_url=objectMyUrl->getBase_url();
+    pDLLRFID = new DLL_RFID;
+    pDLLRFID->OpenRFIDReader();
+    connect(pDLLRFID,SIGNAL(sendSignalToExe(QString)),
+            this,SLOT(receiveCardNumber(QString)));
 
 }
 
 Login::~Login()
 {
+    delete pDLLRFID;
+    pDLLRFID=nullptr;
     delete ui;
     ui=nullptr;
     delete objCustomerMain;
     objCustomerMain=nullptr;
 }
 
+void Login::receiveCardNumber(QString s)
+{
+    ui->leUsername->setText(s);
+}
+
+
 void Login::on_btnLogin_clicked()
 {
-    //qDebug()<<"base_url="+base_url;
-    username=ui->leUsername->text();
-    password=ui->lePassword->text();
+   qDebug()<<"base_url="+base_url;
+
+   username=ui->leUsername->text();
+   password=ui->lePassword->text();
 
     //Pekan materiaaleista
     QJsonObject jsonObj;
