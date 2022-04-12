@@ -33,3 +33,8 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+win32: LIBS += -L$$PWD/'../../../../OneDrive/ohjelmistoprojetki teht/DLL_RFID/build/debug/' -lDLL_RFID
+
+INCLUDEPATH += $$PWD/'../../../../OneDrive/ohjelmistoprojetki teht/DLL_RFID'
+DEPENDPATH += $$PWD/'../../../../OneDrive/ohjelmistoprojetki teht/DLL_RFID'

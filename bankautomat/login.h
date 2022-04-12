@@ -7,6 +7,7 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include "dll_rfid.h"
 
 
 namespace Ui {
@@ -21,6 +22,8 @@ public:
     explicit Login(QWidget *parent = nullptr);
     ~Login();
 
+public slots:
+    void receiveCardNumber(QString);
 private slots:
     void on_btnLogin_clicked();
     void loginSlot(QNetworkReply *reply);
@@ -38,6 +41,9 @@ private:
     QNetworkReply *reply;
     QByteArray response_data;
     QByteArray token;
+    DLL_RFID *pDLLRFID;
+
+
 
 
 };

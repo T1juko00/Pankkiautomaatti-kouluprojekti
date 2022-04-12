@@ -54,7 +54,7 @@ void engine::cardnumberRead()
         {
             qDebug()<<"koko datan koko = "<<readData.length(); //16
             qDebug()<<"koko luettu data = "<<data; // AAAAAAA/BBBBB/CCCCCCC
-            data = data.mid(4,9); // kortinlukija arvo, alusta 4 merkkiä pois ja lopusta 3
+            data = data.mid(0,1); // kortinlukija arvo, aluta 4 merkkiä pois ja lopusta 3
             emit  sendSignalToInterface(data);
             return;
        }
