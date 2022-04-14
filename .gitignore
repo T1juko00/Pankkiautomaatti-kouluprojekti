@@ -1,5 +1,7 @@
 api/node_modules/
 api/.env
+api/database.js
+api/bin
 bankautomat/build/
 bankautomat/*.user
 bankautomat/DLL_RFID/*.user
