@@ -27,10 +27,8 @@ void Customer::on_btnShowtransactions_clicked()
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
 
-    //WEBTOKEN ALKU
-
     request.setRawHeader(QByteArray("Authorization"),(webtoken));
-    //WEBTOKEN LOPPU
+
 
     balanceManager = new QNetworkAccessManager(this);
     connect(balanceManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(balanceSlot(QNetworkReply*)));
@@ -47,10 +45,20 @@ void Customer::balanceSlot(QNetworkReply *reply)
         QString balance;
         foreach (const QJsonValue &value, json_array) {
             QJsonObject json_obj = value.toObject();
-            balance+=json_obj["fname"].toString()+"|"+json_obj["lname"].toString()+"|"+QString::number(json_obj["cardnumber"].toInt())+"|"+QString::number(json_obj["balance"].toInt())+"\r";
+            balance+=json_obj["fname"].toString()+"|"+json_obj["lname"].toString()+"|"+QString::number(json_obj["id_account"].toInt())+"|"+QString::number(json_obj["balance"].toInt())+"\r";
+
+
+            QString site_url=objectMyUrl->getBase_url()+"/account/withdraw20/"+2;
+            QNetworkRequest request((site_url));
+            request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
         }
 
         qDebug()<<balance;
 
+        QString site_url=objectMyUrl->getBase_url()+"/transactions/"+2;
+        QNetworkRequest request((site_url));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
         ui->textBalance->setText(balance);
+
 }

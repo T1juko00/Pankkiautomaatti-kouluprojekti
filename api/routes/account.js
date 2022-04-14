@@ -114,6 +114,7 @@ function(request, response) {
     } else { 
       
       response.json(dbResult);
+      
 
     }
   });
