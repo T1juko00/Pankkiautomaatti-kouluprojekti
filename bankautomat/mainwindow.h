@@ -3,6 +3,7 @@
 
 #include "login.h"
 #include "dll_rfid.h"
+#include "restapidll.h"
 
 #include <QMainWindow>
 
