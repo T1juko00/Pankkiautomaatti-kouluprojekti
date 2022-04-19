@@ -40,3 +40,8 @@ win32: LIBS += -L$$PWD/DLL_RFID/build/debug/ -lDLL_RFID
 
 INCLUDEPATH += $$PWD/DLL_RFID
 DEPENDPATH += $$PWD/DLL_RFID
+
+win32: LIBS += -L$$PWD/../../../../../koodinpaska/restapiDLL/build/debug/ -lrestapiDLL
+
+INCLUDEPATH += $$PWD/../../../../../koodinpaska/restapiDLL
+DEPENDPATH += $$PWD/../../../../../koodinpaska/restapiDLL

@@ -13,11 +13,17 @@ ui(new Ui::Customer)
     ui->labelCustomerid->setText(Customerid);
     ui->labelCustomerid->setText(token);
     objectMyUrl = new MyUrl;
+    pRestapiDLL = new restapiDLL;
 }
 
 Customer::~Customer()
 {
     delete ui;
+}
+
+void Customer::receiveWithdrawSignal(short)
+{
+
 }
 
 void Customer::on_btnShowtransactions_clicked()
@@ -62,3 +68,10 @@ void Customer::balanceSlot(QNetworkReply *reply)
         ui->textBalance->setText(balance);
 
 }
+
+void Customer::on_nostoNappi_clicked()
+{
+    connect(p,SIGNAL(sendSignalToExe(QString)),
+            this,SLOT(receiveCardNumber(QString)));
+}
+
