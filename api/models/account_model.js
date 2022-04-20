@@ -25,6 +25,18 @@ const account = {
     );
   },
 
+  withdrawlog: function(params, callback) {
+    
+    return db.query(
+      'CALL sp_withdrawmoney(?,?)',
+      [params.amount, params.first_id],
+      
+      callback
+    );
+  } 
+
+
+  
   
 };
 module.exports = account;
