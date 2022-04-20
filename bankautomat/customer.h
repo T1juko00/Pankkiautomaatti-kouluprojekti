@@ -7,7 +7,8 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <QDialog>
-#include "restapidll.h"
+#include "withdraw.h"
+
 
 namespace Ui {
 class Customer;
@@ -22,24 +23,30 @@ public:
     ~Customer();
 
 public slots:
-    void receiveWithdrawSignal(short);
+    void receiveSignal();
 
 private slots:
-    void on_btnShowtransactions_clicked();
+
     void balanceSlot(QNetworkReply *reply);
+    void transSlot(QNetworkReply *reply);
     void on_nostoNappi_clicked();
+
+
+    void on_btnshowBalance_clicked();
+
+    void on_btnTrans_clicked();
 
 private:
     Ui::Customer *ui;
     MyUrl *objectMyUrl;
 
     QNetworkAccessManager *balanceManager;
+    QNetworkAccessManager *transManager;
     QNetworkReply *reply;
     QByteArray response_data;
     QString username;
     QByteArray webtoken;
-
-    restapiDLL *pRestapiDLL;
+    withdraw *pwith;
 };
 
 #endif // CUSTOMER_H

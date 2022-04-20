@@ -1,6 +1,11 @@
 #ifndef CARD_H
 #define CARD_H
 
+#include "myurl.h"
+#include <QtNetwork>
+#include <QNetworkReply>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 #include <QDialog>
 
 namespace Ui {

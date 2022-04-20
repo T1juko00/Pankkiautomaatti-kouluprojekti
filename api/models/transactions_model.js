@@ -26,20 +26,8 @@ const transactions = {
   },
   getTransactions: function(cardnumber,callback){
     return db.query(
-      'SELECT id_transactions, DATE_CLOCK, events, amount, accountnumber, cardnumber FROM transactions INNER JOIN account on transactions.account_id_account = account.id_account INNER JOIN card ON account.id_account = card.account_id_account WHERE cardnumber = ?', [cardnumber],callback);
+      'SELECT id_transactions, date, events, amount, accountnumber, cardnumber FROM transactions INNER JOIN account on transactions.account_id_account = account.id_account INNER JOIN card ON account.id_account = card.account_id_account WHERE cardnumber = ?', [cardnumber],callback);
   },
-
-  withdrawTransactions20: function(transactions, callback) {
-    return db.query(
-      'insert into transactions (DATE_CLOCK,events,amount,account_id_account) values(NOW(),Withdraw,20,1)',
-      [ transactions.DATE_CLOCK,transactions.events,transactions.amount,transactions.account_id_account],
-      callback
-    ); 
-  }
-  
-  
-  
-  
 
 };
 module.exports = transactions;

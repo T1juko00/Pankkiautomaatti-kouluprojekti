@@ -4,6 +4,7 @@
 #include "login.h"
 #include "dll_rfid.h"
 #include "restapidll.h"
+#include "card.h"
 
 #include <QMainWindow>
 
@@ -26,6 +27,8 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Login *objLogin;
+
+
 
 
 };

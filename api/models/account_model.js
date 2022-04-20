@@ -24,42 +24,6 @@ const account = {
       callback
     );
   },
-  
-  withdraw20: function(id,callback){
-    return db.query(
-      'update account set balance=balance-20 where id_account=?',
-      [id],
-      callback
-    );
-    
-  }, 
-
-  withdraw40: function(id,callback){
-    return db.query(
-      'update account set balance=balance-40 where id_account=?',
-      [id],
-      callback
-    );
-    
-  },
-
-  withdraw50: function(id,callback){
-    return db.query(
-      'update account set balance=balance-50 where id_account=?',
-      [id],
-      callback
-    );
-    
-  }, 
-
-  withdraw100: function(id,callback){
-    return db.query(
-      'update account set balance=balance-100 where id_account=?',
-      [id],
-      callback
-    );
-    
-  },
 
   
 };
