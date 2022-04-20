@@ -13,32 +13,18 @@ ui(new Ui::Customer)
     ui->labelCustomerid->setText(Customerid);
     ui->labelCustomerid->setText(token);
     objectMyUrl = new MyUrl;
-    pRestapiDLL = new restapiDLL;
+    pwith = new withdraw;
 }
 
 Customer::~Customer()
 {
     delete ui;
+    delete pwith;
+    pwith = nullptr;
 }
 
-void Customer::receiveWithdrawSignal(short)
+void Customer::receiveSignal()
 {
-
-}
-
-void Customer::on_btnShowtransactions_clicked()
-{
-    QString site_url=objectMyUrl->getBase_url()+"/customer/balance/"+username;
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-
-    request.setRawHeader(QByteArray("Authorization"),(webtoken));
-
-
-    balanceManager = new QNetworkAccessManager(this);
-    connect(balanceManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(balanceSlot(QNetworkReply*)));
-    reply = balanceManager->get(request);
 
 }
 
@@ -69,9 +55,77 @@ void Customer::balanceSlot(QNetworkReply *reply)
 
 }
 
+void Customer::transSlot(QNetworkReply *reply)
+{
+    response_data = reply ->readAll();
+    qDebug()<<response_data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+        QJsonArray json_array = json_doc.array();
+        QString transactions;
+        foreach (const QJsonValue &value, json_array) {
+            QJsonObject json_obj = value.toObject();
+            transactions+=json_obj["date"].toString()+"|"+json_obj["events"].toString()+"|"+QString::number(json_obj["amount"].toInt())+"|"+json_obj["accountnumber"].toString()+"|"+QString::number(json_obj["cardnumber"].toInt())+"\r";
+
+
+            QString site_url=objectMyUrl->getBase_url()+"/transactions/"+754322;
+            QNetworkRequest request((site_url));
+            request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+        }
+
+        qDebug()<<transactions;
+
+        QString site_url=objectMyUrl->getBase_url()+"/transactions/"+754322;
+        QNetworkRequest request((site_url));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+        ui->textBalance->setText(transactions);
+
+}
+
+
+
 void Customer::on_nostoNappi_clicked()
 {
-    connect(p,SIGNAL(sendSignalToExe(QString)),
-            this,SLOT(receiveCardNumber(QString)));
+    connect(pwith,SIGNAL(signalToWithdraw()),
+            this,(SLOT(receiveSignal)));
+    pwith->exec();
+
+}
+
+
+
+void Customer::on_btnshowBalance_clicked()
+{
+    QString site_url=objectMyUrl->getBase_url()+"/customer/balance/"+username;
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+
+    request.setRawHeader(QByteArray("Authorization"),(webtoken));
+
+
+    balanceManager = new QNetworkAccessManager(this);
+    connect(balanceManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(balanceSlot(QNetworkReply*)));
+    reply = balanceManager->get(request);
+
+
+}
+
+
+void Customer::on_btnTrans_clicked()
+{
+    QString site_url=objectMyUrl->getBase_url()+"/transactions/"+754322;
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+
+    request.setRawHeader(QByteArray("Authorization"),(webtoken));
+
+
+    transManager = new QNetworkAccessManager(this);
+    connect(transManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(transSlot(QNetworkReply*)));
+    reply = transManager->get(request);
+
+
 }
 

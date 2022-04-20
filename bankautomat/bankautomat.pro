@@ -14,20 +14,23 @@ SOURCES += \
     login.cpp \
     main.cpp \
     mainwindow.cpp \
-    myurl.cpp
+    myurl.cpp \
+    withdraw.cpp
 
 HEADERS += \
     card.h \
     customer.h \
     login.h \
     mainwindow.h \
-    myurl.h
+    myurl.h \
+    withdraw.h
 
 FORMS += \
     card.ui \
     customer.ui \
     login.ui \
-    mainwindow.ui
+    mainwindow.ui \
+    withdraw.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -41,7 +44,8 @@ win32: LIBS += -L$$PWD/DLL_RFID/build/debug/ -lDLL_RFID
 INCLUDEPATH += $$PWD/DLL_RFID
 DEPENDPATH += $$PWD/DLL_RFID
 
-win32: LIBS += -L$$PWD/../../../../../koodinpaska/restapiDLL/build/debug/ -lrestapiDLL
 
-INCLUDEPATH += $$PWD/../../../../../koodinpaska/restapiDLL
-DEPENDPATH += $$PWD/../../../../../koodinpaska/restapiDLL
+win32: LIBS += -L$$PWD/restapiDLL/build/debug/ -lrestapiDLL
+
+INCLUDEPATH += $$PWD/restapiDLL
+DEPENDPATH += $$PWD/restapiDLL
