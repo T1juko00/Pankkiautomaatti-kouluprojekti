@@ -7,7 +7,7 @@ withdraw::withdraw(QWidget *parent) :
     ui(new Ui::withdraw)
 {
     ui->setupUi(this);
-   /*prestapi->withdrawExe(20);
+    /*prestapi->withdrawExe(20);
     connect(prestapi,SIGNAL(withdrawSignalToExe(QJsonObject)),
             this,SLOT(receiveSignalFromRestapi(QString)));*/
 }
