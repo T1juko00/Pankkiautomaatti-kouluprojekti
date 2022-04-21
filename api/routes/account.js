@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const account = require('../models/account_model');
-const transactions = require('../models/transactions_model');
+
 
 router.get('/:id?',
  function(request, response) {
@@ -60,65 +60,18 @@ function(request, response) {
   });
 }); 
 
-router.get('/withdraw20/:id', 
+router.post('/withdrawlog/', 
 function(request, response) {
-  if(request.params.id) {
-  account.withdraw20(request.params.id, function(err, dbResult) {
+  const params = {amount, first_id } = request.body;
+  account.withdrawlog(params, function(err, dbResult) {
     if (err) {
       response.json(err);
-    } else { 
-      
+    } else {
       response.json(dbResult);
-
     }
   });
-}
-}); 
+});
 
-router.get('/withdraw40/:id', 
-function(request, response) {
-  if(request.params.id) {
-  account.withdraw40(request.params.id, function(err, dbResult) {
-    if (err) {
-      response.json(err);
-    } else { 
-      
-      response.json(dbResult);
-
-    }
-  });
-}
-}); 
-
-router.get('/withdraw50/:id', 
-function(request, response) {
-  if(request.params.id) {
-  account.withdraw50(request.params.id, function(err, dbResult) {
-    if (err) {
-      response.json(err);
-    } else { 
-      
-      response.json(dbResult);
-
-    }
-  });
-}
-}); 
-
-router.get('/withdraw100/:id', 
-function(request, response) {
-  if(request.params.id) {
-  account.withdraw100(request.params.id, function(err, dbResult) {
-    if (err) {
-      response.json(err);
-    } else { 
-      
-      response.json(dbResult);
-      
-
-    }
-  });
-}
-}); 
+ 
 
 module.exports = router;

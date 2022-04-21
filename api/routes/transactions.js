@@ -59,7 +59,7 @@ function(request, response) {
   });
 });
 
-router.post('/transactions/:cardnumber', function(request,response) {
+router.post('/transactions/:cardnumber?', function(request,response) {
   transactions.getTransactions(request.params.cardnumber, function(err,dbResult){
     if(err){
       response.json(err);

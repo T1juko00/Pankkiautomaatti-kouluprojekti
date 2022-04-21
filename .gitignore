@@ -5,3 +5,4 @@ api/bin
 bankautomat/build/
 bankautomat/*.user
 bankautomat/DLL_RFID/*.user
+bankautomat/restapiDLL/*.user
