@@ -4,7 +4,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const helmet = require('helmet');
 const cors = require('cors');
-//const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 var indexRouter = require('./routes/index');
 var loginRouter = require('./routes/login');
@@ -27,7 +27,7 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
-//app.use(authenticateToken);
+app.use(authenticateToken);
 
 app.use('/account', accountRouter);
 app.use('/account_has_customer', account_has_customerRouter);
@@ -37,7 +37,7 @@ app.use('/transactions', transactionsRouter);
  
 
 
-/*function authenticateToken(req, res, next) {
+function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
   
@@ -53,7 +53,7 @@ app.use('/transactions', transactionsRouter);
   
       next()
     })
-  }*/
+  }
 
 
 module.exports = app;
