@@ -4,30 +4,25 @@
 #include "restapiDLL_global.h"
 #include <QObject>
 #include <QJsonArray>
-#include "drawdll.h"
+#include <QJsonObject>
+
 
 class RESTAPIDLL_EXPORT restapiDLL : public QObject
 {
     Q_OBJECT
 public:
-    restapiDLL(QString baseUrl);
+    static restapiDLL *instance();
+    explicit restapiDLL (QObject *parent = nullptr);
     ~restapiDLL();
+    virtual void withdraw(double amount)=0;
 
-private:
-   drawDLL * pdrawDLL;
+
 
 signals:
 
    void withdrawSignalToExe(QJsonObject result);
 
 
-public slots:
-
-   void withdrawExe(double amount);
-
-
-private slots:
-   void withdrawSlot(QJsonObject result);
 };
 
 #endif // RESTAPIDLL_H

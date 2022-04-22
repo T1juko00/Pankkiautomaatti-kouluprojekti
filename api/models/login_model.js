@@ -1,4 +1,4 @@
-/*const db = require('../database');
+const db = require('../database');
 
 const login={
   checkPassword: function(username, callback) {
@@ -6,4 +6,4 @@ const login={
     }
 };
           
-module.exports = login; */
+module.exports = login; 
