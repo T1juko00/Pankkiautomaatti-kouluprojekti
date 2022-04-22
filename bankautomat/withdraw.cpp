@@ -2,19 +2,19 @@
 #include "ui_withdraw.h"
 
 
-withdraw::withdraw(QWidget *parent) :
-    QDialog(parent),
+withdraw::withdraw(QWidget *parent) : QDialog(parent),
     ui(new Ui::withdraw)
 {
     ui->setupUi(this);
-    /*prestapi->withdrawExe(20);
+    /*prestapi->withdraw(20);
     connect(prestapi,SIGNAL(withdrawSignalToExe(QJsonObject)),
             this,SLOT(receiveSignalFromRestapi(QString)));*/
 }
 
 withdraw::~withdraw()
 {
-    delete ui;
+   delete prestapi;
+   delete ui;
 }
 
 void withdraw::on_pushButton_20_clicked()

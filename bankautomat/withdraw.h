@@ -8,7 +8,6 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
-#include "dll_rfid.h"
 
 
 namespace Ui {

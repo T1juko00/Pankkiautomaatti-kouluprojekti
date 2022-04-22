@@ -7,13 +7,16 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include <QNetworkReply>
+#include "restapidll.h"
 
-class drawDLL : public QObject
+class drawDLL : public restapiDLL
 {
     Q_OBJECT
 public:
-    drawDLL(QString baseUrl);
+    explicit drawDLL();
+    explicit drawDLL (QObject *parent = nullptr);
     ~drawDLL();
+    void withdraw(double amount)override;
 
 private:
     QJsonObject replyToJsonObject(QNetworkReply *reply);
@@ -21,19 +24,10 @@ private:
     QNetworkAccessManager *accManager;
     QNetworkReply *reply;
     QByteArray responseData;
-    QByteArray token;
 
-signals:
-
-    void withdrawSignalToDLL(QJsonObject result);  // TODO
-
-
-public slots:
-
-    void DLLslot(double amount);
 
 private slots:
-    void ReSlot(QNetworkReply * reply);
+    void Replyslot(QNetworkReply * reply);
 
 };
 
