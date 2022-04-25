@@ -67,14 +67,14 @@ void Customer::transSlot(QNetworkReply *reply)
             transactions+=json_obj["date"].toString()+"|"+json_obj["events"].toString()+"|"+QString::number(json_obj["amount"].toInt())+"|"+json_obj["accountnumber"].toString()+"|"+QString::number(json_obj["cardnumber"].toInt())+"\r";
 
 
-            QString site_url=objectMyUrl->getBase_url()+"/transactions/"+754322;
+            QString site_url=objectMyUrl->getBase_url()+"/transactions/transactions/1/";
             QNetworkRequest request((site_url));
             request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
         }
 
         qDebug()<<transactions;
 
-        QString site_url=objectMyUrl->getBase_url()+"/transactions/"+754322;
+        QString site_url=objectMyUrl->getBase_url()+"/transactions/transactions/1/";
         QNetworkRequest request((site_url));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
@@ -114,7 +114,7 @@ void Customer::on_btnshowBalance_clicked()
 
 void Customer::on_btnTrans_clicked()
 {
-    QString site_url=objectMyUrl->getBase_url()+"/transactions/"+754322;
+    QString site_url=objectMyUrl->getBase_url()+"/transactions/transactions/1/";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 

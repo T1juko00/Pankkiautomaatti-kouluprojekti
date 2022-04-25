@@ -1,27 +1,25 @@
 #include "restapidll.h"
 
 
-restapiDLL::restapiDLL(QString baseUrl)
+
+restapiDLL *restapiDLL::instance()
 {
-    pdrawDLL = new drawDLL(baseUrl);
+   /* pdrawDLL = new drawDLL;
 
     connect(pdrawDLL,SIGNAL(withdrawSignalToExe),
-            this,SLOT(withdrawSlot(QJsonObject)));
+            this,SLOT(withdrawSlot(QJsonObject)));*/
+}
+
+restapiDLL::restapiDLL(QObject *parent) : QObject(parent)
+{
+
 }
 
 restapiDLL::~restapiDLL()
 {
-    delete pdrawDLL;
-    pdrawDLL = nullptr;
+    /*delete pdrawDLL;
+    pdrawDLL = nullptr;*/
+    qDebug()<<"ollaan destructor ";
 
 }
 
-void restapiDLL::withdrawExe(double amount)
-{
-    pdrawDLL->DLLslot(amount);
-}
-
-void restapiDLL::withdrawSlot(QJsonObject result)
-{
-    emit withdrawSignalToExe(result);
-}
