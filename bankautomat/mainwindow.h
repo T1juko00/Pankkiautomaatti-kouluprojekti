@@ -6,6 +6,7 @@
 #include "restapidll.h"
 #include "card.h"
 
+
 #include <QMainWindow>
 
 QT_BEGIN_NAMESPACE
@@ -21,12 +22,14 @@ public:
     ~MainWindow();
 
 
+
 private slots:
     void on_btnLogin_clicked();
 
 private:
     Ui::MainWindow *ui;
     Login *objLogin;
+    restapiDLL *prestapi;
 
 
 

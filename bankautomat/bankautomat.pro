@@ -45,6 +45,8 @@ INCLUDEPATH += $$PWD/DLL_RFID
 DEPENDPATH += $$PWD/DLL_RFID
 
 
+
+
 win32: LIBS += -L$$PWD/restapiDLL/build/debug/ -lrestapiDLL
 
 INCLUDEPATH += $$PWD/restapiDLL

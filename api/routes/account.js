@@ -62,8 +62,9 @@ function(request, response) {
 
 router.post('/withdrawlog/', 
 function(request, response) {
-  const params = {amount, first_id } = request.body;
-  account.withdrawlog(params, function(err, dbResult) {
+  console.log ("request body",request.body.id_account, request.body.balance)
+  params = {id_account,balance} = request.body
+  account.withdrawlog(request.body, function(err, dbResult) {
     if (err) {
       response.json(err);
     } else {
@@ -71,7 +72,6 @@ function(request, response) {
     }
   });
 });
-
  
 
 module.exports = router;

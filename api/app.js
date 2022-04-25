@@ -27,7 +27,7 @@ app.use(cors());
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
-app.use(authenticateToken);
+//app.use(authenticateToken);
 
 app.use('/account', accountRouter);
 app.use('/account_has_customer', account_has_customerRouter);

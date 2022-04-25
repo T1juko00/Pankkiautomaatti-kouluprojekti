@@ -29,11 +29,11 @@ const account = {
     
     return db.query(
       'CALL sp_withdrawmoney(?,?)',
-      [params.amount, params.first_id],
+      [params.balance, params.id_account],
       
       callback
     );
-  } 
+  }
 
 
   
