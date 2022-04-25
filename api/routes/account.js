@@ -62,8 +62,12 @@ function(request, response) {
 
 router.post('/withdrawlog/', 
 function(request, response) {
+<<<<<<< HEAD
   console.log ("request body",request.body.id_account, request.body.balance)
   params = {id_account,balance} = request.body
+=======
+  params = {amount, id_account} = request.body
+>>>>>>> c0663870a12d2f8099e8b697f3581b4d20a8b29f
   account.withdrawlog(request.body, function(err, dbResult) {
     if (err) {
       response.json(err);
