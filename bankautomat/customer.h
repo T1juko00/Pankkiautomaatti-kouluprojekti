@@ -27,13 +27,11 @@ public:
 public slots:
     void receiveSignal();
     void receiveBalanceSignalFromRestApi(QString);
+    void receiveTransactionsSignal(QString);
 
 private slots:
 
-
-    void transSlot(QNetworkReply *reply);
     void on_nostoNappi_clicked();
-
 
     void on_btnshowBalance_clicked();
 

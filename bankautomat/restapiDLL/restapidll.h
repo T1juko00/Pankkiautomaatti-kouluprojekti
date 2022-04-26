@@ -18,18 +18,21 @@ public:
     ~restapiDLL();
     void withdrawal(QString,QString);
      void getBalance(QString id);
+     void getTransactions(QString);
+     QString recvTransactions();
 
     QString getBase_url() const;
 
 signals:
     void withDrawalSignalToExe(QByteArray);
     void balanceSignal(QString);
+    void sendTransactionsToExe(QString);
 
 
 private slots:
     void withDrawalSlot(QNetworkReply *reply);
     void getBalanceSlot(QNetworkReply *reply);
-
+    void transactionsSlot(QNetworkReply *reply);
 
 private:
     QNetworkAccessManager *withDrawalManager;
@@ -38,6 +41,7 @@ private:
     QString base_url;
     QNetworkAccessManager *getBalanceManager;
     QByteArray webtoken;
+    QNetworkAccessManager *transactionsManager;
 
 
 };

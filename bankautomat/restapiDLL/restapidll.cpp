@@ -17,7 +17,7 @@ restapiDLL::~restapiDLL()
 }
 
 
-void restapiDLL::getBalance(QString id)
+void restapiDLL::getBalance(QString)
 {
 
     qDebug()<< "getBalanceFunc()";
@@ -92,6 +92,44 @@ void restapiDLL::withDrawalSlot(QNetworkReply *reply)
         withDrawalManager->deleteLater();
 }
 
+void restapiDLL::getTransactions(QString)
+{
+    QString site_url="http://localhost:3001/transactions/transactions/1";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
 
+    request.setRawHeader(QByteArray("Authorization"),(webtoken));
 
+
+    transactionsManager = new QNetworkAccessManager(this);
+    connect(transactionsManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(transactionsSlot(QNetworkReply*)));
+    reply = transactionsManager->get(request);
+}
+
+void restapiDLL::transactionsSlot(QNetworkReply *reply)
+{
+    response_Data = reply ->readAll();
+    qDebug()<<response_Data;
+    QJsonDocument json_doc = QJsonDocument::fromJson(response_Data);
+        QJsonArray json_array = json_doc.array();
+        QString transactions;
+        foreach (const QJsonValue &value, json_array) {
+            QJsonObject json_obj = value.toObject();
+            transactions+=json_obj["date"].toString()+"|"+json_obj["events"].toString()+"|"+QString::number(json_obj["amount"].toInt())+"\r";
+
+
+            QString site_url="http://localhost:3001/transactions/transactions/1";
+            QNetworkRequest request((site_url));
+            request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+        }
+
+        qDebug()<<transactions;
+
+        QString site_url="http://localhost:3001/transactions/transactions/1";
+        QNetworkRequest request((site_url));
+        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+
+        emit sendTransactionsToExe(transactions);
+
+}

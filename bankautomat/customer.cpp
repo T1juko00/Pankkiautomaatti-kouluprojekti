@@ -17,6 +17,9 @@ ui(new Ui::Customer)
 
     connect(prestApi,SIGNAL(balanceSignal(QString)),
             this,SLOT(receiveBalanceSignalFromRestApi(QString)));
+
+    connect(prestApi,SIGNAL(sendTransactionsToExe(QString)),
+            this,SLOT(receiveTransactionsSignal(QString)));
 }
 
 Customer::~Customer()
@@ -43,49 +46,16 @@ void Customer::receiveBalanceSignalFromRestApi(QString s)
     ui->textBalance->setText(s);
 }
 
-
-void Customer::transSlot(QNetworkReply *reply)
+void Customer::receiveTransactionsSignal(QString s)
 {
-    response_data = reply ->readAll();
-    qDebug()<<response_data;
-    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-        QJsonArray json_array = json_doc.array();
-        QString transactions;
-        foreach (const QJsonValue &value, json_array) {
-            QJsonObject json_obj = value.toObject();
-            transactions+=json_obj["date"].toString()+"|"+json_obj["events"].toString()+"|"+QString::number(json_obj["amount"].toInt())+"|"+json_obj["accountnumber"].toString()+"|"+QString::number(json_obj["cardnumber"].toInt())+"\r";
-
-
-            QString site_url=objectMyUrl->getBase_url()+"/transactions/transactions/1/";
-            QNetworkRequest request((site_url));
-            request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-        }
-
-        qDebug()<<transactions;
-
-        QString site_url=objectMyUrl->getBase_url()+"/transactions/transactions/1/";
-        QNetworkRequest request((site_url));
-        request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-        ui->textBalance->setText(transactions);
-
+    ui->textBalance->setText(s);
 }
+
+
 
 void Customer::on_btnTrans_clicked()
 {
-    QString site_url=objectMyUrl->getBase_url()+"/transactions/transactions/1/";
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-
-    request.setRawHeader(QByteArray("Authorization"),(webtoken));
-
-
-    transManager = new QNetworkAccessManager(this);
-    connect(transManager, SIGNAL(finished(QNetworkReply*)),this, SLOT(transSlot(QNetworkReply*)));
-    reply = transManager->get(request);
-
-
+    prestApi->getTransactions("1");
 }
 
 
