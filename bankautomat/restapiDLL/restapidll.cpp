@@ -19,9 +19,9 @@ restapiDLL::~restapiDLL()
 
 void restapiDLL::getBalance(QString id)
 {
-    QString kalle;
+
     qDebug()<< "getBalanceFunc()";
-    QString site_url=getBase_url()+"/customer/balance/";
+    QString site_url=getBase_url()+"/customer/balance/A/";
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 

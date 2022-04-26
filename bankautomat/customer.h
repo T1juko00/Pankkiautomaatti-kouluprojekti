@@ -8,6 +8,7 @@
 #include <QJsonDocument>
 #include <QDialog>
 #include "withdraw.h"
+#include "restapidll.h"
 
 
 
@@ -25,10 +26,11 @@ public:
 
 public slots:
     void receiveSignal();
+    void receiveBalanceSignalFromRestApi(QString);
 
 private slots:
 
-    void balanceSlot(QNetworkReply *reply);
+
     void transSlot(QNetworkReply *reply);
     void on_nostoNappi_clicked();
 
@@ -48,6 +50,7 @@ private:
     QString username;
     QByteArray webtoken;
     withdraw *pwith;
+    restapiDLL *prestApi;
 };
 
 #endif // CUSTOMER_H

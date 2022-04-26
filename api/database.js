@@ -2,7 +2,7 @@ const mysql = require('mysql');
 const connection = mysql.createPool({
   host: 'localhost',
   user: 'root',
-  password: '1234',
+  password: 'veleho_123',
   database: 'bankautomat',
   multipleStatements: true
 });

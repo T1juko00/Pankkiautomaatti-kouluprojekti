@@ -12,8 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    delete prestapi;
-    prestapi = nullptr;
     delete ui;
     delete objLogin;
     ui=nullptr;
