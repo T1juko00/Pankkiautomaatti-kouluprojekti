@@ -8,17 +8,19 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     objLogin=new Login;
-
 }
 
 MainWindow::~MainWindow()
 {
+    delete prestapi;
+    prestapi = nullptr;
     delete ui;
     delete objLogin;
     ui=nullptr;
     objLogin=nullptr;
 
 }
+
 
 void MainWindow::on_btnLogin_clicked()
 {

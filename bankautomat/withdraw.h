@@ -3,11 +3,12 @@
 
 #include "restapidll.h"
 #include <QDialog>
-#include <myurl.h>
+#include "myurl.h"
 #include <QtNetwork>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+
 
 
 namespace Ui {
@@ -22,10 +23,11 @@ public:
 
     explicit withdraw(QWidget *parent = nullptr);
     ~withdraw();
-
 signals:
-
     void signalToWithdraw();
+
+public slots:
+    void receiveSignalFromRestApi(QByteArray);
 
 private slots:
     void on_pushButton_20_clicked();
@@ -33,7 +35,7 @@ private slots:
     void on_pushButton_60_clicked();
     void on_pushButton_100_clicked();
     void on_lopetaIstunto_clicked();
-    void on_muuSumma_clicked();
+
 
 public slots:
 
@@ -43,6 +45,8 @@ private:
 
     Ui::withdraw *ui;
     restapiDLL *prestapi;
+
+
 
 };
 

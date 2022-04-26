@@ -65,24 +65,11 @@
     <string>100</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="muuSumma">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>220</y>
-     <width>321</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Muu summa</string>
-   </property>
-  </widget>
   <widget class="QPushButton" name="lopetaIstunto">
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>250</y>
+     <y>220</y>
      <width>321</width>
      <height>23</height>
     </rect>

@@ -2,7 +2,7 @@
 #define LOGIN_H
 #include "customer.h"
 #include <QDialog>
-#include <myurl.h>
+#include "myurl.h"
 #include <QtNetwork>
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
