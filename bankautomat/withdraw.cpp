@@ -29,21 +29,21 @@ void withdraw::on_pushButton_20_clicked()
 {
 
     emit signalToWithdraw();
-    prestapi->withdrawal("7","20");
+    prestapi->withdrawal("1","20");
     ui->lineEdit->setText("Nosto onnistui, 20 euroa");
 }
 
 
 void withdraw::on_pushButton_40_clicked()
 {
-    prestapi->withdrawal("7","40");
+    prestapi->withdrawal("1","40");
     ui->lineEdit->setText("Nosto onnistui, 40 euroa");
 }
 
 
 void withdraw::on_pushButton_60_clicked()
 {
-    prestapi->withdrawal("7","60");
+    prestapi->withdrawal("1","60");
     ui->lineEdit->setText("Nosto onnistui, 60 euroa");
 
 }
@@ -51,7 +51,7 @@ void withdraw::on_pushButton_60_clicked()
 
 void withdraw::on_pushButton_100_clicked()
 {
-    prestapi->withdrawal("7","100");
+    prestapi->withdrawal("1","100");
     ui->lineEdit->setText("Nosto onnistui, 100 euroa");
 
 }
