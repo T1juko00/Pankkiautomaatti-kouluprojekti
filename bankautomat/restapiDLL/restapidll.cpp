@@ -67,8 +67,8 @@ void restapiDLL::withdrawal(QString id_account, QString amount)
 {
         qDebug()<< "withdrawal account" <<id_account << "amount: " << amount;
         QJsonObject jsonObj;
-        jsonObj.insert("id_account", id_account); //acc id
-        jsonObj.insert("balance", amount); //withdrawal amount
+        jsonObj.insert("id_account", id_account);
+        jsonObj.insert("balance", amount);
         QString site_url="http://localhost:3001/account/withdrawlog";
         QNetworkRequest request((site_url));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");

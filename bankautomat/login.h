@@ -8,6 +8,8 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include "dll_rfid.h"
+#include <QTimer>
+#include <QDebug>
 
 
 namespace Ui {
@@ -24,6 +26,7 @@ public:
 
 public slots:
     void receiveCardNumber(QString);
+
 private slots:
     void on_btnLogin_clicked();
     void loginSlot(QNetworkReply *reply);
@@ -41,10 +44,9 @@ private:
     QNetworkReply *reply;
     QByteArray response_data;
     QByteArray token;
-    DLL_RFID *pDLLRFID;
+    DLL_RFID *pDLLRFID; //RFID-lukijan pointteri
 
-
-
+    short logintries;
 
 };
 

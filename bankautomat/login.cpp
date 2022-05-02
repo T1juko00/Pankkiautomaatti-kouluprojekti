@@ -1,6 +1,5 @@
 #include "login.h"
 #include "ui_login.h"
-#include <QDebug>
 
 
 Login::Login(QWidget *parent) :
@@ -12,8 +11,10 @@ Login::Login(QWidget *parent) :
     base_url=objectMyUrl->getBase_url();
     pDLLRFID = new DLL_RFID;
     pDLLRFID->OpenRFIDReader();
+    logintries = 0;
+
     connect(pDLLRFID,SIGNAL(sendSignalToExe(QString)),
-            this,SLOT(receiveCardNumber(QString)));
+            this,SLOT(receiveCardNumber(QString))); //Signaali luotu RFID-lukijan DLL kautta
 
 }
 
@@ -41,6 +42,7 @@ void Login::on_btnLogin_clicked()
    password=ui->lePassword->text();
 
     //Pekan materiaaleista
+
     QJsonObject jsonObj;
     jsonObj.insert("username",username);
     jsonObj.insert("password",password);
@@ -49,7 +51,8 @@ void Login::on_btnLogin_clicked()
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
     loginManager = new QNetworkAccessManager(this);
-    connect(loginManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
+    connect(loginManager, SIGNAL(finished (QNetworkReply*)),
+            this, SLOT(loginSlot(QNetworkReply*)));
 
     reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
 
@@ -65,9 +68,17 @@ void Login::loginSlot(QNetworkReply *reply)
     objCustomerMain=new Customer(username,id,token);
     objCustomerMain->show();
     }
-    else{
+    else {
         ui->leUsername->setText("");
         ui->lePassword->setText("");
-    }
-}
 
+        qDebug() <<"Logintries:" <<logintries;
+        logintries = logintries +1;
+
+        if(logintries ==3){
+            qDebug() <<"Kortinnumero tai PIN-koodi on väärä!";
+            this->~Login();
+        }
+
+        }
+    }

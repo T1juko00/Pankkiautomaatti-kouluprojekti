@@ -9,7 +9,6 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    card.cpp \
     customer.cpp \
     login.cpp \
     main.cpp \
@@ -18,7 +17,6 @@ SOURCES += \
     withdraw.cpp
 
 HEADERS += \
-    card.h \
     customer.h \
     login.h \
     mainwindow.h \
@@ -26,7 +24,6 @@ HEADERS += \
     withdraw.h
 
 FORMS += \
-    card.ui \
     customer.ui \
     login.ui \
     mainwindow.ui \

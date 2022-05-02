@@ -13,81 +13,60 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QPushButton" name="pushButton_20">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>100</y>
-     <width>321</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>20</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_40">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>130</y>
-     <width>321</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>40</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_60">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>160</y>
-     <width>321</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>60</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_100">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>190</y>
-     <width>321</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>100</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="lopetaIstunto">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>220</y>
-     <width>321</width>
-     <height>23</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Lopeta istunto</string>
-   </property>
-  </widget>
-  <widget class="QLineEdit" name="lineEdit">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>10</y>
-     <width>321</width>
-     <height>71</height>
-    </rect>
-   </property>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QLineEdit" name="lineEdit">
+     <property name="maximumSize">
+      <size>
+       <width>400</width>
+       <height>100</height>
+      </size>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton_20">
+     <property name="text">
+      <string>20</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton_40">
+     <property name="text">
+      <string>40</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton_60">
+     <property name="text">
+      <string>60</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="pushButton_100">
+     <property name="text">
+      <string>100</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="muuSumma_button">
+     <property name="text">
+      <string>Muu Summa</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QPushButton" name="lopetaIstunto">
+     <property name="text">
+      <string>Sulje</string>
+     </property>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>

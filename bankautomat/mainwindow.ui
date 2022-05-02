@@ -23,7 +23,7 @@
     <item>
      <widget class="QPushButton" name="btnLogin">
       <property name="text">
-       <string>Login</string>
+       <string>Kirjaudu sisään</string>
       </property>
      </widget>
     </item>

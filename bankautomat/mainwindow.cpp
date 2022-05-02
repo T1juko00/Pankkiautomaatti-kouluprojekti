@@ -7,7 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
 
 {
     ui->setupUi(this);
-    objLogin=new Login;
+    objLogin = new Login;
+
 }
 
 MainWindow::~MainWindow()
@@ -20,10 +21,35 @@ MainWindow::~MainWindow()
 }
 
 
+
 void MainWindow::on_btnLogin_clicked()
 {
     objLogin->show();
+
+    objLogin->show();
+        ui->setupUi(this);
+            timerCounter=0;
+
+            objQTimer = new QTimer();
+            connect(objQTimer, SIGNAL(timeout()),
+                    this, SLOT(TimerSlot()));
+
+            objQTimer->start(1000);
 }
 
+void MainWindow::TimerSlot()
+{
+    qDebug() << "Timer:"<<timerCounter;
+    timerCounter++;
 
+    if(timerCounter==30)
+        {
+            objQTimer->stop();
+            delete objQTimer;
+            objQTimer = nullptr;
+            this->close();
+            delete ui;
+            objLogin->close();
 
+        }
+}
