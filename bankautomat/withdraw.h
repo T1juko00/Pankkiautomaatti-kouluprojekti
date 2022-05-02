@@ -23,8 +23,6 @@ public:
 
     explicit withdraw(QWidget *parent = nullptr);
     ~withdraw();
-signals:
-    void signalToWithdraw();
 
 public slots:
     void receiveSignalFromRestApi(QByteArray);
@@ -35,16 +33,14 @@ private slots:
     void on_pushButton_60_clicked();
     void on_pushButton_100_clicked();
     void on_lopetaIstunto_clicked();
-
-
-public slots:
-
-    void receiveSignalFromRestapi(QString);
+    void on_muuSumma_button_clicked();
 
 private:
 
     Ui::withdraw *ui;
     restapiDLL *prestapi;
+
+    QString value;
 
 
 

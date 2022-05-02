@@ -25,17 +25,15 @@ public:
     ~Customer();
 
 public slots:
-    void receiveSignal();
-    void receiveBalanceSignalFromRestApi(QString);
-    void receiveTransactionsSignal(QString);
+    void receiveBalanceSignalFromRestApi(QString); //Saldo näkymän signaali
+    void receiveTransactionsSignal(QString); //Tilitapahtumien signaali
 
 private slots:
+    void on_nostoNappi_clicked(); //Nosto tapahtuman "PushButton"
+    void on_btnshowBalance_clicked(); //Saldo näkymän "PushButton"
+    void on_btnTrans_clicked(); //Tilipahtumien "PushButton"
 
-    void on_nostoNappi_clicked();
-
-    void on_btnshowBalance_clicked();
-
-    void on_btnTrans_clicked();
+    void on_closeButton_clicked();
 
 private:
     Ui::Customer *ui;

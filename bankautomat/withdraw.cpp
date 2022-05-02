@@ -7,6 +7,7 @@ withdraw::withdraw(QWidget *parent) : QDialog(parent),
 {
     ui->setupUi(this);
     prestapi = new restapiDLL;
+
     connect(prestapi,SIGNAL(withDrawalSignalToExe(QByteArray)),
             this,SLOT(receiveSignalFromRestApi(QByteArray)));
 
@@ -27,24 +28,22 @@ void withdraw::receiveSignalFromRestApi(QByteArray)
 
 void withdraw::on_pushButton_20_clicked()
 {
-
-    emit signalToWithdraw();
     prestapi->withdrawal("1","20");
-    ui->lineEdit->setText("Nosto onnistui, 20 euroa");
+    ui->lineEdit->setText("Nosto onnistui, ota rahat automaatista! | 20e");
 }
 
 
 void withdraw::on_pushButton_40_clicked()
 {
     prestapi->withdrawal("1","40");
-    ui->lineEdit->setText("Nosto onnistui, 40 euroa");
+    ui->lineEdit->setText("Nosto onnistui, ota rahat automaatista! | 40e");
 }
 
 
 void withdraw::on_pushButton_60_clicked()
 {
     prestapi->withdrawal("1","60");
-    ui->lineEdit->setText("Nosto onnistui, 60 euroa");
+    ui->lineEdit->setText("Nosto onnistui, ota rahat automaatista! | 60e");
 
 }
 
@@ -52,7 +51,7 @@ void withdraw::on_pushButton_60_clicked()
 void withdraw::on_pushButton_100_clicked()
 {
     prestapi->withdrawal("1","100");
-    ui->lineEdit->setText("Nosto onnistui, 100 euroa");
+    ui->lineEdit->setText("Nosto onnistui, ota rahat automaatista! | 100e");
 
 }
 
@@ -62,10 +61,12 @@ void withdraw::on_lopetaIstunto_clicked()
     this->close();
 }
 
-
-
-void withdraw::receiveSignalFromRestapi(QString s)
+void withdraw::on_muuSumma_button_clicked()
 {
-    ui->lineEdit->setText(s);
-
+    value = ui->lineEdit->text();
+        QJsonObject jsonObj;
+        jsonObj.insert("amount",value);
+        prestapi->withdrawal("1",value);
+         ui->lineEdit->setText("Nosto onnistui, ota rahat automaatista! | "+value);
 }
+

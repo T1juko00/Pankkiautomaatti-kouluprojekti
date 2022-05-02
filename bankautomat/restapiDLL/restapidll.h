@@ -20,8 +20,7 @@ public:
      void getBalance(QString id);
      void getTransactions(QString);
      QString recvTransactions();
-
-    QString getBase_url() const;
+     QString getBase_url() const;
 
 signals:
     void withDrawalSignalToExe(QByteArray);

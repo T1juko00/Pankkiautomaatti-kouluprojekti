@@ -16,10 +16,10 @@ ui(new Ui::Customer)
     prestApi = new restapiDLL;
 
     connect(prestApi,SIGNAL(balanceSignal(QString)),
-            this,SLOT(receiveBalanceSignalFromRestApi(QString)));
+            this,SLOT(receiveBalanceSignalFromRestApi(QString))); //Signaali luotu saldo näkymälle
 
     connect(prestApi,SIGNAL(sendTransactionsToExe(QString)),
-            this,SLOT(receiveTransactionsSignal(QString)));
+            this,SLOT(receiveTransactionsSignal(QString))); //Signaali luotu tilitapahtumalle
 }
 
 Customer::~Customer()
@@ -27,12 +27,6 @@ Customer::~Customer()
     delete ui;
     delete pwith;
     pwith = nullptr;
-}
-
-void Customer::receiveSignal()
-{
-
-
 }
 
 void Customer::on_btnshowBalance_clicked()
@@ -61,14 +55,13 @@ void Customer::on_btnTrans_clicked()
 
 void Customer::on_nostoNappi_clicked()
 {
-    connect(pwith,SIGNAL(signalToWithdraw()),
-            this,(SLOT(receiveSignal)));
+
     pwith->exec();
 
 }
 
-
-
-
-
+void Customer::on_closeButton_clicked()
+{
+    this->close();
+}
 

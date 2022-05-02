@@ -11,5 +11,3 @@ QString MyUrl::getBase_url() const
 {
     return base_url;
 }
-
-
