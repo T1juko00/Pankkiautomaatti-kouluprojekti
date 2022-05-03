@@ -31,7 +31,7 @@ void engine::open()
         qDebug()<<"no connection";
         return;
     }
-    pQSerialPort->setPortName("COM6");
+    pQSerialPort->setPortName("COM5");
     pQSerialPort->setBaudRate(9600);
     pQSerialPort->setDataBits(QSerialPort::Data8); //Databittien määrä kussakin merkissä on 8. Sitä käytetään useimmille datatyypeille, koska tämä koko vastaa tavun kokoa.
     if (!pQSerialPort->open(QIODevice::ReadWrite))

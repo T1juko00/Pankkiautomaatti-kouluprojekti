@@ -8,6 +8,7 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
+#include "createvaluedraw.h"
 
 
 
@@ -23,6 +24,7 @@ public:
 
     explicit withdraw(QWidget *parent = nullptr);
     ~withdraw();
+    QTimer *objQTimer;
 
 public slots:
     void receiveSignalFromRestApi(QByteArray);
@@ -39,9 +41,9 @@ private:
 
     Ui::withdraw *ui;
     restapiDLL *prestapi;
-
     QString value;
-
+    short timerCountTwo;
+    createValueDraw *pCreateValueDraw;
 
 
 };
