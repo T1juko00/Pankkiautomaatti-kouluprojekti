@@ -9,6 +9,7 @@ CONFIG += c++11
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    createvaluedraw.cpp \
     customer.cpp \
     login.cpp \
     main.cpp \
@@ -17,6 +18,7 @@ SOURCES += \
     withdraw.cpp
 
 HEADERS += \
+    createvaluedraw.h \
     customer.h \
     login.h \
     mainwindow.h \
@@ -24,6 +26,7 @@ HEADERS += \
     withdraw.h
 
 FORMS += \
+    createvaluedraw.ui \
     customer.ui \
     login.ui \
     mainwindow.ui \
@@ -35,14 +38,12 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 
+win32: LIBS += -L$$PWD/restapiDLL/build/debug/ -lrestapiDLL
+
+INCLUDEPATH += $$PWD/restapiDLL
+DEPENDPATH += $$PWD/restapiDLL
 
 win32: LIBS += -L$$PWD/DLL_RFID/build/debug/ -lDLL_RFID
 
 INCLUDEPATH += $$PWD/DLL_RFID
 DEPENDPATH += $$PWD/DLL_RFID
-
-
-win32: LIBS += -L$$PWD/restapiDLL/build/debug/ -lrestapiDLL
-
-INCLUDEPATH += $$PWD/restapiDLL
-DEPENDPATH += $$PWD/restapiDLL

@@ -39,10 +39,10 @@ void MainWindow::on_btnLogin_clicked()
 
 void MainWindow::TimerSlot()
 {
-    qDebug() << "Timer:"<<timerCounter;
+    //qDebug() << "Timer:"<<timerCounter;
     timerCounter++;
 
-    if(timerCounter==30)
+    if(timerCounter==20)
         {
             objQTimer->stop();
             delete objQTimer;
