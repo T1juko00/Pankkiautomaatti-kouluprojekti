@@ -33,7 +33,7 @@ private slots:
     void on_btnshowBalance_clicked(); //Saldo näkymän "PushButton"
     void on_btnTrans_clicked(); //Tilipahtumien "PushButton"
 
-    void on_closeButton_clicked();
+    void on_closeButton_clicked(); //Kirjaudu ulos "SULJE" toiminto
 
 private:
     Ui::Customer *ui;

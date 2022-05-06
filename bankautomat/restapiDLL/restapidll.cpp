@@ -63,33 +63,32 @@ void restapiDLL::getBalanceSlot(QNetworkReply *reply)
        emit balanceSignal(balance);
 }
 
-void restapiDLL::withdrawal(QString id_account, QString amount)
+void restapiDLL::withdraw(QString id_account, QString amount)
 {
-        qDebug()<< "withdrawal account" <<id_account << "amount: " << amount;
         QJsonObject jsonObj;
         jsonObj.insert("id_account", id_account);
         jsonObj.insert("balance", amount);
         QString site_url="http://localhost:3001/account/withdrawlog";
         QNetworkRequest request((site_url));
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-        withDrawalManager = new QNetworkAccessManager(this);
+        withDrawManager = new QNetworkAccessManager(this);
 
-        connect(withDrawalManager, SIGNAL(finished(QNetworkReply*)),
-                this, SLOT(withDrawalSlot(QNetworkReply*)));
+        connect(withDrawManager, SIGNAL(finished(QNetworkReply*)),
+                this, SLOT(withDrawSlot(QNetworkReply*)));
 
-        reply = withDrawalManager->post(request, QJsonDocument(jsonObj).toJson());
+        reply = withDrawManager->post(request, QJsonDocument(jsonObj).toJson());
 }
 
 
 
-void restapiDLL::withDrawalSlot(QNetworkReply *reply)
+void restapiDLL::withDrawSlot(QNetworkReply *reply)
 {
-        qDebug()<< "withdrawalSlot()";
+        qDebug()<< "withdrawSlot()";
         response_Data=reply->readAll();
         qDebug()<<response_Data;
-        emit withDrawalSignalToExe(response_Data);
+        emit withDrawSignalToExe(response_Data);
         reply->deleteLater();
-        withDrawalManager->deleteLater();
+        withDrawManager->deleteLater();
 }
 
 void restapiDLL::getTransactions(QString)

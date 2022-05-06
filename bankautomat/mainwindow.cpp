@@ -4,7 +4,6 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-
 {
     ui->setupUi(this);
     objLogin = new Login;
@@ -17,7 +16,6 @@ MainWindow::~MainWindow()
     delete objLogin;
     ui=nullptr;
     objLogin=nullptr;
-
 }
 
 
@@ -25,7 +23,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_btnLogin_clicked()
 {
     objLogin->show();
-
     objLogin->show();
         ui->setupUi(this);
             timerCounter=0;
