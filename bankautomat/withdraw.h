@@ -30,12 +30,12 @@ public slots:
     void receiveSignalFromRestApi(QByteArray);
 
 private slots:
-    void on_pushButton_20_clicked();
-    void on_pushButton_40_clicked();
-    void on_pushButton_60_clicked();
-    void on_pushButton_100_clicked();
-    void on_lopetaIstunto_clicked();
-    void on_muuSumma_button_clicked();
+    void on_pushButton_20_clicked(); //20e nosto nappi
+    void on_pushButton_40_clicked(); //40e nosto nappi
+    void on_pushButton_60_clicked(); //60e nosto nappi
+    void on_pushButton_100_clicked(); //100e nosto nappi
+    void on_lopetaIstunto_clicked(); //Sulje nosto tapahtumat nappi
+    void on_muuSumma_button_clicked(); //Valinnaisen summan tapahtuma (avaa uuden ikkunan)
 
 private:
 

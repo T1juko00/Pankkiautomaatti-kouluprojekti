@@ -16,25 +16,25 @@ class RESTAPIDLL_EXPORT restapiDLL : public QObject
 public:
     restapiDLL(QObject * parent = nullptr);
     ~restapiDLL();
-    void withdrawal(QString,QString);
+    void withdraw(QString,QString);
      void getBalance(QString id);
      void getTransactions(QString);
      QString recvTransactions();
      QString getBase_url() const;
 
 signals:
-    void withDrawalSignalToExe(QByteArray);
+    void withDrawSignalToExe(QByteArray);
     void balanceSignal(QString);
     void sendTransactionsToExe(QString);
 
 
 private slots:
-    void withDrawalSlot(QNetworkReply *reply);
+    void withDrawSlot(QNetworkReply *reply);
     void getBalanceSlot(QNetworkReply *reply);
     void transactionsSlot(QNetworkReply *reply);
 
 private:
-    QNetworkAccessManager *withDrawalManager;
+    QNetworkAccessManager *withDrawManager;
     QNetworkReply *reply;
     QByteArray response_Data;
     QString base_url;

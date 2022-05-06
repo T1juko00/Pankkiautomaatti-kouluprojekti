@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_restapiDLL_t {
     QByteArrayData data[10];
-    char stringdata0[138];
+    char stringdata0[134];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -33,20 +33,20 @@ struct qt_meta_stringdata_restapiDLL_t {
 static const qt_meta_stringdata_restapiDLL_t qt_meta_stringdata_restapiDLL = {
     {
 QT_MOC_LITERAL(0, 0, 10), // "restapiDLL"
-QT_MOC_LITERAL(1, 11, 21), // "withDrawalSignalToExe"
-QT_MOC_LITERAL(2, 33, 0), // ""
-QT_MOC_LITERAL(3, 34, 13), // "balanceSignal"
-QT_MOC_LITERAL(4, 48, 21), // "sendTransactionsToExe"
-QT_MOC_LITERAL(5, 70, 14), // "withDrawalSlot"
-QT_MOC_LITERAL(6, 85, 14), // "QNetworkReply*"
-QT_MOC_LITERAL(7, 100, 5), // "reply"
-QT_MOC_LITERAL(8, 106, 14), // "getBalanceSlot"
-QT_MOC_LITERAL(9, 121, 16) // "transactionsSlot"
+QT_MOC_LITERAL(1, 11, 19), // "withDrawSignalToExe"
+QT_MOC_LITERAL(2, 31, 0), // ""
+QT_MOC_LITERAL(3, 32, 13), // "balanceSignal"
+QT_MOC_LITERAL(4, 46, 21), // "sendTransactionsToExe"
+QT_MOC_LITERAL(5, 68, 12), // "withDrawSlot"
+QT_MOC_LITERAL(6, 81, 14), // "QNetworkReply*"
+QT_MOC_LITERAL(7, 96, 5), // "reply"
+QT_MOC_LITERAL(8, 102, 14), // "getBalanceSlot"
+QT_MOC_LITERAL(9, 117, 16) // "transactionsSlot"
 
     },
-    "restapiDLL\0withDrawalSignalToExe\0\0"
+    "restapiDLL\0withDrawSignalToExe\0\0"
     "balanceSignal\0sendTransactionsToExe\0"
-    "withDrawalSlot\0QNetworkReply*\0reply\0"
+    "withDrawSlot\0QNetworkReply*\0reply\0"
     "getBalanceSlot\0transactionsSlot"
 };
 #undef QT_MOC_LITERAL
@@ -93,10 +93,10 @@ void restapiDLL::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         auto *_t = static_cast<restapiDLL *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->withDrawalSignalToExe((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
+        case 0: _t->withDrawSignalToExe((*reinterpret_cast< QByteArray(*)>(_a[1]))); break;
         case 1: _t->balanceSignal((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 2: _t->sendTransactionsToExe((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 3: _t->withDrawalSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
+        case 3: _t->withDrawSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         case 4: _t->getBalanceSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         case 5: _t->transactionsSlot((*reinterpret_cast< QNetworkReply*(*)>(_a[1]))); break;
         default: ;
@@ -130,7 +130,7 @@ void restapiDLL::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         int *result = reinterpret_cast<int *>(_a[0]);
         {
             using _t = void (restapiDLL::*)(QByteArray );
-            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&restapiDLL::withDrawalSignalToExe)) {
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&restapiDLL::withDrawSignalToExe)) {
                 *result = 0;
                 return;
             }
@@ -193,7 +193,7 @@ int restapiDLL::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 }
 
 // SIGNAL 0
-void restapiDLL::withDrawalSignalToExe(QByteArray _t1)
+void restapiDLL::withDrawSignalToExe(QByteArray _t1)
 {
     void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);

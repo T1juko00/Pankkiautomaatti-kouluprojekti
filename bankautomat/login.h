@@ -25,10 +25,10 @@ public:
     ~Login();
 
 public slots:
-    void receiveCardNumber(QString);
+    void receiveCardNumber(QString); //Kortinnumeron vastaanottaja slotti
 
 private slots:
-    void on_btnLogin_clicked();
+    void on_btnLogin_clicked(); //Salasanan syötön jälkeen tuleva kirjaudu toiminto
     void loginSlot(QNetworkReply *reply);
 
 private:
@@ -44,7 +44,7 @@ private:
     QNetworkReply *reply;
     QByteArray response_data;
     QByteArray token;
-    DLL_RFID *pDLLRFID; //RFID-lukijan pointteri
+    DLL_RFID *pDLLRFID;
 
     short logintries;
 

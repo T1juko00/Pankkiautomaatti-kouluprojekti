@@ -22,8 +22,8 @@ public:
     QTimer *objQTimer;
 
 private slots:
-    void on_btnLogin_clicked();
-    void TimerSlot();
+    void on_btnLogin_clicked(); //Kirjaudu sisään nappi
+    void TimerSlot(); //Automaattisen ajastin sulkijan slotti
 
 private:
     Ui::MainWindow *ui;

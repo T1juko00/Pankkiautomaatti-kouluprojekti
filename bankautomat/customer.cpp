@@ -56,12 +56,16 @@ void Customer::on_btnTrans_clicked()
 void Customer::on_nostoNappi_clicked()
 {
 
+    //Valinnaisen nosto tapahtuman uuden ikkunan toteutus
+
     pwith->exec();
 
 }
 
 void Customer::on_closeButton_clicked()
 {
+    //Valinnaisen nosto tapahtuman "SULJE" toiminnon toteutus
+
     this->close();
 }
 
